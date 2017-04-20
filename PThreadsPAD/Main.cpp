@@ -5,6 +5,8 @@
 #include <pthread.h>
 
 #include "FiltroBrilho.h"
+#include "ImageReader.h"
+#include "Imagem.h"
 
 using namespace std;
 
@@ -20,6 +22,11 @@ int main(int argc, char** argv) {
 /* Metodo criado só para validar se Pthreads está funcionando*/
 void teste_threads() {
 	alterarBrilho();
+
+	Imagem* imagem = lerImagem("Imagens/background.ppm");
+	printf("Altura da imagem: %d\n", imagem->getHeight());
+
+	Sleep(1000);
 
 	pthread_t threads[QTD_THREADS];
 

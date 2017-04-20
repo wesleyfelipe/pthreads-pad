@@ -24,12 +24,18 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImageReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Imagem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FiltroBrilho.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
