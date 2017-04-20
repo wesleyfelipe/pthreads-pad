@@ -4,6 +4,7 @@
 
 #include "FiltroBrilho.h"
 #include "ImageReader.h"
+#include "ImageWriter.h"
 #include "Imagem.h"
 
 using namespace std;
@@ -16,5 +17,6 @@ int main(int argc, char** argv) {
 
 void executarFiltro() {
 	Imagem* imagem = lerImagem("Imagens/background.ppm");
-	alterarBrilho(imagem);
+	imagem = alterarBrilho(imagem);
+	gravarImagemPPM3(imagem);
 }

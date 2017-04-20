@@ -11,13 +11,18 @@ using namespace std;
 #define QTD_THREADS 5
 
 Imagem *imagem;
+int qtdPixelsThread;
 
 void *alterarBrilhoThread(void *parameter);
 
-void alterarBrilho(Imagem* img) {
+Imagem* alterarBrilho(Imagem* img) {
+	int totalPixels = img->getHeight() * img->getWidth();
+	qtdPixelsThread = (int) (totalPixels / QTD_THREADS) + 1;
+
+
 	printf("Altura da imagem: %d\n", img->getHeight());
 	printf("Largura da imagem: %d\n", img->getWidth());
-	printf("Total de pixels: %d\n", img->getHeight() * img->getWidth());
+	printf("Total de pixels: %d\n", totalPixels);
 
 	imagem = img;
 
@@ -32,12 +37,14 @@ void alterarBrilho(Imagem* img) {
 	for (int i = 0; i < QTD_THREADS; i++) {
 		pthread_join(threads[i], NULL);
 	}
+	Sleep(20000);
 
-	Sleep(10000);
+	return imagem;
 }
 
 void *alterarBrilhoThread(void *parameter) {
 	int index = (int) parameter;
 	printf("Teste %d\n", index);
+	printf("Vou trabalhar com %d pixels \n", qtdPixelsThread);
 	return (void *)0;
 }
