@@ -1,3 +1,4 @@
 #pragma once
+#include "Imagem.h"
 
-void alterarBrilho();
+void alterarBrilho(Imagem* imagem);
