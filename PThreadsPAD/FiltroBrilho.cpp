@@ -60,8 +60,14 @@ void *alterarBrilhoThread(void *parameter) {
 
 int getCorBrilho(int cor, int fatorBrilho) {
 	int result = cor + fatorBrilho;
+
 	if (result > 255) {
 		return 255;
 	}
+
+	if (result < 0) {
+		return 0;
+	}
+
 	return result;
 }

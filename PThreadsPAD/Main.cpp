@@ -17,6 +17,6 @@ int main(int argc, char** argv) {
 
 void executarFiltro() {
 	Imagem* imagem = lerImagem("Imagens/baby-groot.ppm");
-	imagem = alterarBrilho(imagem, 8);
+	imagem = alterarBrilho(imagem, -20);
 	gravarImagemPPM3(imagem, "Imagens/baby-groot2.ppm");
 }
