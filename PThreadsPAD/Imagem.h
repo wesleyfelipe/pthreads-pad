@@ -19,6 +19,10 @@ public:
 		pixels[x + y * width] = rgb;
 	}
 
+	void setRGB(int pixel, int rgb) {
+		pixels[pixel] = rgb;
+	}
+
 	int getRGB(int x, int y) {
 		return pixels[x + y * width];
 	}

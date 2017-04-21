@@ -8,23 +8,22 @@
 
 using namespace std;
 
-#define QTD_THREADS 5
+#define QTD_THREADS 6
 
 Imagem *imagem;
 int qtdPixelsThread;
+int fatorBrilho;
+int totalPixels;
 
 void *alterarBrilhoThread(void *parameter);
+int getCorBrilho(int cor, int fatorBrilho);
 
-Imagem* alterarBrilho(Imagem* img) {
-	int totalPixels = img->getHeight() * img->getWidth();
+Imagem* alterarBrilho(Imagem* img, int fator) {
+	totalPixels = img->getHeight() * img->getWidth();
 	qtdPixelsThread = (int) (totalPixels / QTD_THREADS) + 1;
 
-
-	printf("Altura da imagem: %d\n", img->getHeight());
-	printf("Largura da imagem: %d\n", img->getWidth());
-	printf("Total de pixels: %d\n", totalPixels);
-
 	imagem = img;
+	fatorBrilho = fator;
 
 	pthread_t threads[QTD_THREADS];
 
@@ -37,14 +36,32 @@ Imagem* alterarBrilho(Imagem* img) {
 	for (int i = 0; i < QTD_THREADS; i++) {
 		pthread_join(threads[i], NULL);
 	}
-	//Sleep(20000);
 
 	return imagem;
 }
 
 void *alterarBrilhoThread(void *parameter) {
 	int index = (int) parameter;
-	printf("Teste %d\n", index);
-	printf("Vou trabalhar com %d pixels \n", qtdPixelsThread);
+	
+	int i = index * qtdPixelsThread;
+	int f = i + qtdPixelsThread;
+
+	printf("Sou a Thread %d. Vou trabalhar entre os pixels %d e %d. Fator de brilho = %d\n", index, i, i + qtdPixelsThread, fatorBrilho);
+
+	while (i <= totalPixels && i < f) {
+		int rgb = (getCorBrilho(imagem->getR(i), fatorBrilho) << 16)
+			| (getCorBrilho(imagem->getG(i), fatorBrilho) << 8)
+			| getCorBrilho(imagem->getB(i), fatorBrilho);
+		imagem->setRGB(i, rgb);
+		i++;
+	}
 	return (void *)0;
+}
+
+int getCorBrilho(int cor, int fatorBrilho) {
+	int result = cor + fatorBrilho;
+	if (result > 255) {
+		return 255;
+	}
+	return result;
 }
