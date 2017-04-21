@@ -8,8 +8,6 @@
 
 using namespace std;
 
-#define QTD_THREADS 6
-
 Imagem *imagem;
 int qtdPixelsThread;
 int fatorBrilho;
@@ -18,22 +16,22 @@ int totalPixels;
 void *alterarBrilhoThread(void *parameter);
 int getCorBrilho(int cor, int fatorBrilho);
 
-Imagem* alterarBrilho(Imagem* img, int fator) {
+Imagem* alterarBrilho(Imagem* img, int fBrilho, int qtdThreads) {
 	totalPixels = img->getHeight() * img->getWidth();
-	qtdPixelsThread = (int) (totalPixels / QTD_THREADS) + 1;
+	qtdPixelsThread = (int) (totalPixels / qtdThreads) + 1;
 
 	imagem = img;
-	fatorBrilho = fator;
+	fatorBrilho = fBrilho;
 
-	pthread_t threads[QTD_THREADS];
+	pthread_t *threads = new pthread_t[qtdThreads];
 
-	for (int i = 0; i < QTD_THREADS; i++) {
+	for (int i = 0; i < qtdThreads; i++) {
 		pthread_t thread_obj;
 		pthread_create(&thread_obj, NULL, alterarBrilhoThread, (void*) i);
 		threads[i] = thread_obj;
 	}
 
-	for (int i = 0; i < QTD_THREADS; i++) {
+	for (int i = 0; i < qtdThreads; i++) {
 		pthread_join(threads[i], NULL);
 	}
 
