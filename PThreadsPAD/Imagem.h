@@ -39,20 +39,6 @@ public:
 		pixels = p;
 	}
 
-	int* subImage(int ox, int oy, int w, int h) {
-		int *subPixels = new int[w * h];
-		for (int y = 0; y < h; y++) {
-			for (int x = 0; x < w; x++) {
-				//verifica se esta dentro dos limites da imagem
-				if (x + ox + (y + oy) * width < width * height)
-					subPixels[x + y * w] = pixels[x + ox + (y + oy) * width];
-				else
-					subPixels[x + y * w] = 16711935; //magenta
-			}
-		}
-		return subPixels;
-	}
-
 private:
 	int width, height;
 	int *pixels;

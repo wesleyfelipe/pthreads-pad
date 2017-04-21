@@ -1,5 +1,7 @@
-#pragma once
-
+#include <windows.h>
+#include <fstream>
 #include "Imagem.h"
 
-void gravarImagemPPM3(Imagem * img);
+using namespace std;
+
+void gravarImagemPPM3(Imagem * img, char* nomeArquivo);

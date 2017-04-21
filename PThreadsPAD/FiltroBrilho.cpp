@@ -37,7 +37,7 @@ Imagem* alterarBrilho(Imagem* img) {
 	for (int i = 0; i < QTD_THREADS; i++) {
 		pthread_join(threads[i], NULL);
 	}
-	Sleep(20000);
+	//Sleep(20000);
 
 	return imagem;
 }
