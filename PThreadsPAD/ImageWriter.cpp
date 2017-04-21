@@ -22,7 +22,11 @@ void gravarImagemPPM3(Imagem * img, char* nomeArquivo) {
 	outFile << img->getWidth() << " " << img->getHeight() << endl;
 	outFile << 255 << endl;
 
-
+	for (int i = (img->getHeight() * img->getWidth()) -1; i >= 0 ; i--) {
+		outFile << img->getB(i) << endl;
+		outFile << img->getG(i) << endl;
+		outFile << img->getR(i) << endl;
+	}
 
 	outFile.close();
 }

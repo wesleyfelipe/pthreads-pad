@@ -23,6 +23,18 @@ public:
 		return pixels[x + y * width];
 	}
 
+	int getR(int pixel) {
+		return pixels[pixel] >> 16;
+	}
+
+	int getG(int pixel) {
+		return (pixels[pixel] >> 8) & 255;
+	}
+
+	int getB(int pixel) {
+		return pixels[pixel] & 255;
+	}
+
 	int getWidth() {
 		return width;
 	}
