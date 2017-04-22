@@ -18,9 +18,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FiltroBrilho.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,18 +27,21 @@
     <ClCompile Include="ImageWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FiltroMediana.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Imagem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FiltroBrilho.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ImageReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ImageWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FiltroMediana.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

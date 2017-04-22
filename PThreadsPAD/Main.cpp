@@ -3,14 +3,14 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "FiltroBrilho.h"
+#include "FiltroMediana.h"
 #include "ImageReader.h"
 #include "ImageWriter.h"
 #include "Imagem.h"
 
 using namespace std;
 
-void executarFiltro(char* nomeArquivo,  char* nomeArquivoResultado, int fBrilho, int qtdThreads);
+void executarFiltro(char* nomeArquivo,  char* nomeArquivoResultado, int qtdThreads);
 
 void executarTestesPerformance(char* nomeArquivo, int maxThreads);
 
@@ -34,7 +34,7 @@ void executarTestesPerformance(char* nomeArquivo, int maxThreads) {
 		printf("Iniciando programa. Qtd de threads: %d\n", i);
 		clock_t tStart = clock();
 
-		executarFiltro(nomeArquivo, "Imagens/resultado.ppm", -100, i);
+		executarFiltro(nomeArquivo, "Imagens/resultado.ppm", i);
 
 		printf("Execucao encerrada.\n");
 		printf("Tempo total de execucao: %.2fs\n", (double)(clock() - tStart) / CLOCKS_PER_SEC);
@@ -42,8 +42,8 @@ void executarTestesPerformance(char* nomeArquivo, int maxThreads) {
 	//}
 }
 
-void executarFiltro(char* nomeArquivo, char* nomeArquivoResultado, int fBrilho, int qtdThreads) {
+void executarFiltro(char* nomeArquivo, char* nomeArquivoResultado, int qtdThreads) {
 	Imagem* imagem = lerImagem(nomeArquivo);
-	imagem = alterarBrilho(imagem, fBrilho, qtdThreads);
+	imagem = aplicarMediana(imagem, qtdThreads);
 	gravarImagemPPM3(imagem, nomeArquivoResultado);
 }

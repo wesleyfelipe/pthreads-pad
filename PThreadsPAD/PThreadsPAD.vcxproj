@@ -122,7 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FiltroBrilho.cpp" />
+    <ClCompile Include="FiltroMediana.cpp" />
     <ClCompile Include="ImageReader.cpp" />
     <ClCompile Include="ImageWriter.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -131,7 +131,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FiltroBrilho.h" />
+    <ClInclude Include="FiltroMediana.h" />
     <ClInclude Include="Imagem.h" />
     <ClInclude Include="ImageReader.h" />
     <ClInclude Include="ImageWriter.h" />
