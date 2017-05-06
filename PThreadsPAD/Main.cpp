@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 
 	printf("Iniciando teste de performance. \n");
 
-	executarTestesPerformance("Imagens/baby-groot-2.ppm", 3);
+	executarTestesPerformance("Imagens/baby-groot.ppm", 3);
 
 	printf("Teste de performance finalizado. \n");
 
